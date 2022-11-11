@@ -1,0 +1,64 @@
+<section class="h-100 ">
+  <form [formGroup]="form" (ngSubmit)="createAccount()">
+    <h3><span class="text-danger mb-0">1</span>Rhythm</h3>
+    <h1 class=" text-nowrap  my-3">Register your Account</h1>
+    <!-- first Row -->
+    <div class="row ">
+      <div class="col-md-6 col-lg-6 col-xl-4 offset-xl-1  m-0">
+        <!-- firstname input -->
+        <div class="form-outline">
+          <label class="form-label" for="firstname">FirstName <span class="text-danger">*</span></label>
+          <input type="text" id="firstname" class="form-control form-control-lg" placeholder="Enter Your FirstName"
+            formControlName="FirstName" autocomplete="off" />
+          <div class="text-danger" *ngIf="form.controls['FirstName'].invalid ">
+            <span *ngIf="form.controls['FirstName'].errors?.['required'] && form.controls['FirstName'].touched">This
+              field is required</span>
+            <span *ngIf="form.controls['FirstName'].errors?.['pattern'] && form.controls['FirstName'].dirty">Please
+              enteralphabets only
+            </span>
+            <span
+              *ngIf="(form.controls['FirstName'].errors?.['minlength'] || form.controls['FirstName'].errors?.['maxlength']  )&& !(form.controls['FirstName'].errors?.['pattern']) && form.controls['FirstName'].touched    ">Please
+              min 3 and max 25 only</span>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-4 offset-xl-1 m-0">
+        <!-- lastname input -->
+        <div class="form-outline">
+          <label class="form-label" for="lastname">LastName <span class="text-danger">*</span></label>
+          <input type="text" id="lastname" class="form-control form-control-lg" placeholder="Enter lastname"
+            formControlName="LastName" />
+          <!-- validation msg  -->
+
+        </div>
+      </div>
+    </div>
+    <!-- second  Row -->
+    <div class="row ">
+      <div class="col-md-6 col-lg-6 col-xl-4 offset-xl-1 m-0">
+        <!-- Email input -->
+        <div class="form-outline">
+          <label class="form-label" for="Email">Email Address<span class="text-danger">*</span></label>
+          <input type="text" id="Email" class="form-control form-control-lg" placeholder="Enter Your Email Address"
+            formControlName="Email" />
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 col-xl-4 offset-xl-1 m-0">
+        <!-- Password input -->
+        <div class="form-outline">
+          <div class="position-relative">
+            <label class="form-label" for="password">Password<span class="text-danger">*</span> </label>
+            <span class="eye" class="bi bi-{{icon}}" (click)="onEyeClick()"></span>
+            <input type="{{type}}" id="password" class="form-control form-control-lg" placeholder="Enter password"
+              formControlName="Password" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-4"><button class="btn btn-primary" type="submit">Create Account +</button></div>
+  </form>
+
+
+
+</section>
